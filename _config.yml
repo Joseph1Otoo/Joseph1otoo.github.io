@@ -27,7 +27,7 @@ twitter_username: JosephO24211417
 github_username:  Joseph1Otoo
 
 # Build settings
-theme: minima
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 
