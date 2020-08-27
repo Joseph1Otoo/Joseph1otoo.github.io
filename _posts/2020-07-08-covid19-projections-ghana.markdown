@@ -15,12 +15,12 @@ The time series plots of new covid-19 cases in Ghana gives a different indicatio
 
 [covid-19 projections in Ghana]: https://credits801134125.wordpress.com/2020/07/08/covid-19-projections-in-ghana/
 
-![cv1](C:\Users\user11\Documents\GitHub\Joseph1Otoo.github.io\cv1.png)
+![cv1](C:\Users\user11\Documents\GitHub\Joseph1Otoo.github.io\images\cv1.png)
 
 
 
-![cv2](C:\Users\user11\Documents\GitHub\Joseph1Otoo.github.io\cv2.png)
+![cv2](C:\Users\user11\Documents\GitHub\Joseph1Otoo.github.io\images\cv2.png)
 
 
 
-![cv3](C:\Users\user11\Documents\GitHub\Joseph1Otoo.github.io\cv3.png)
+![cv3](C:\Users\user11\Documents\GitHub\Joseph1Otoo.github.io\images\cv3.png)
