@@ -2,7 +2,7 @@
 layout: post
 title:  Covid-19 Projections in Ghana
 date:   2020-07-08 21:24:45 +0000
-categories: jekyll update
+categories: covid-19 update
 ---
 
 On the 14th of March, 2020, Ghana recorded the first case of  Covid-19. This event was preceded by the first address by the president  of the republic on enhanced measures taken in response to the pandemic.
