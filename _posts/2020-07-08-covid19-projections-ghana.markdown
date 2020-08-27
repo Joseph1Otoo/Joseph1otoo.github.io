@@ -13,7 +13,9 @@ In spite of all the measures implemented, new covid-19 cases are on  the increas
 
 The time series plots of new covid-19 cases in Ghana gives a different indication with regards to when the infection will peak.
 
-[covid-19 projections in Ghana]: https://credits801134125.wordpress.com/2020/07/08/covid-19-projections-in-ghana/
+```
+<img src="{{https://Joseph1Otoo.github.io}}/images/cv1.png" style="display: block; margin: auto;" />
+```
 
 ![cv1](C:/Users/user11/Documents/GitHub/Joseph1Otoo.github.io/images/cv1.png)
 
