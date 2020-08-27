@@ -22,7 +22,7 @@ title: CREDITS BLOG
 email: jotoo011@st.ug.edu.gh
 description: Speaking Through Data for the Common Good  
 baseurl: "/Joseph1Otoo.github.io" # the subpath of your site, e.g. /blog
-url: "localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+url: https://Joseph1Otoo.github.io/ # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: JosephO24211417
 github_username:  Joseph1Otoo
 
