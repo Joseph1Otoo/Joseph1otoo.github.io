@@ -13,12 +13,12 @@ In spite of all the measures implemented, new covid-19 cases are on  the increas
 
 The time series plots of new covid-19 cases in Ghana gives a different indication with regards to when the infection will peak.
 
-![cv1](C:/Users/user11/Documents/GitHub/Joseph1Otoo.github.io/images/cv1.png)
+<img src="http://Joseph1Otoo.github.io/images/cv1.png">
 
 
 
-![cv2](C:/Users/user11/Documents/GitHub/Joseph1Otoo.github.io/images/cv2.png)
+<img src="http://Joseph1Otoo.github.io/images/cv2.png">
 
 
 
-![cv3](C:/Users/user11/Documents/GitHub/Joseph1Otoo.github.io/images/cv3.png)
+<img src="http://Joseph1Otoo.github.io/images/cv3.png">
