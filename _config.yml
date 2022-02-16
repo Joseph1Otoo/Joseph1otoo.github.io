@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: CREDITS BLOG
+title: DATA INSIGHTS GHANA
 email: jotoo011@st.ug.edu.gh
 description: Speaking Through Data for the Common Good  
 baseurl: "/Joseph1Otoo.github.io" # the subpath of your site, e.g. /blog
