@@ -1,21 +1,30 @@
 ---
-# Front matter required so Jekyll processes this file through Sass.
+# Front matter (even empty) is required so Jekyll runs this through Sass.
+#
+# This file MUST live at assets/main.scss. Minima's default layout links
+# /assets/main.css and nothing else, so a stylesheet at any other path compiles
+# happily and is never loaded. This overrides minima's own assets/main.scss,
+# which in 2.5.2 is nothing but front matter and `@import "minima";`.
 ---
+
+@charset "utf-8";
+
+// Minima declares all of its variables with !default in _sass/minima.scss, so
+// assignments here win as long as they come BEFORE the import. Keep these in
+// px: minima's layout builds `calc(#{$content-width} - ...)` against px
+// values, and mixing rem in would emit a broken calc.
+$base-font-size: 17px;
+$base-line-height: 1.65;
+$content-width: 760px; // 800px default is ~95 characters per line at 17px.
+$text-color: #1a1a1a;
+$brand-color: #1f5f8b; // minima uses this for links.
+$grey-color: #5c6470;
 
 @import "minima";
 
-/* ---- Typography -------------------------------------------------------- */
-
-$ink: #1a1a1a;
-$muted: #5c6470;
-$rule: #e4e6ea;
-$accent: #1f5f8b;
-
-body {
-  color: $ink;
-  font-size: 17px;
-  line-height: 1.65;
-}
+// Local additions only below. $grey-color / $grey-color-light come from minima
+// and are derived from the values set above.
+$rule: $grey-color-light;
 
 .site-title,
 h1, h2, h3 {
@@ -24,22 +33,14 @@ h1, h2, h3 {
 
 .page-content a,
 .post-content a {
-  color: $accent;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
-}
-
-/* Keep body text at a comfortable measure. Minima's default wrapper is wide
-   enough to push lines past ~100 characters on a desktop monitor. */
-.post-content,
-.page-content .home {
-  max-width: 44rem;
 }
 
 /* ---- Publications ------------------------------------------------------ */
 
 .pub-profiles {
-  color: $muted;
+  color: $grey-color;
   font-size: 0.9em;
 }
 
@@ -69,12 +70,12 @@ h1, h2, h3 {
 
 .pub-authors,
 .pub-venue {
-  color: $muted;
+  color: $grey-color;
   font-size: 0.92em;
 }
 
 .orcid-id {
-  color: $muted;
+  color: $grey-color;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.85em;
 }
@@ -86,7 +87,7 @@ h1, h2, h3 {
 }
 
 .pub-note {
-  color: $muted;
+  color: $grey-color;
   font-size: 0.9em;
   font-style: italic;
   margin-top: 0.25rem;
@@ -104,7 +105,7 @@ h1, h2, h3 {
 .pub-type {
   background: $rule;
   border-radius: 3px;
-  color: $muted;
+  color: $grey-color;
   padding: 0.1rem 0.4rem;
   text-transform: lowercase;
 }

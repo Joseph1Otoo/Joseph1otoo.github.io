@@ -43,14 +43,22 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Show what was built
+      - name: Check the build actually produced what we expect
         run: |
           echo "--- _site ---"
           find _site -type f | sort
           echo
-          echo "--- publications page: does the Liquid actually render? ---"
+          echo "--- publications: does the Liquid render? ---"
           test -f _site/publications/index.html || { echo "MISSING publications page"; exit 1; }
-          grep -c '<li class="pub"' _site/publications/index.html
+          count=$(grep -c '<li class="pub"' _site/publications/index.html)
+          echo "publication entries rendered: $count"
+          test "$count" -eq 16 || { echo "EXPECTED 16 entries, got $count"; exit 1; }
+          grep -q '{%\|{{' _site/publications/index.html && { echo "raw Liquid leaked into output"; exit 1; }
+          echo
+          echo "--- custom CSS: minima links /assets/main.css and nothing else, so ---"
+          echo "--- our styles only ship if they land in THAT file.               ---"
+          grep -q '\.pub-title' _site/assets/main.css || { echo "custom CSS missing from main.css"; exit 1; }
+          echo "custom rules present in main.css"
 
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/gh-pages'
