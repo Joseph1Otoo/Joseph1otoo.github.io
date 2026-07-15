@@ -35,7 +35,13 @@
       {%- if site.twitter_username %}
       <li><a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a></li>
       {%- endif %}
-      <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+      {%- comment -%}
+        No RSS link while there is a single post from 2020: clicking it lands a
+        visitor on raw Atom XML, which reads as broken even though it is not.
+        The feed itself still builds at /feed.xml and jekyll-seo-tag advertises
+        it to readers via <link rel="alternate"> in <head> — so anyone who wants
+        to subscribe still can. Restore this link once posting is regular.
+      {%- endcomment -%}
     </ul>
   </div>
 </footer>
