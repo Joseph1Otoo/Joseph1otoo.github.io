@@ -1,0 +1,41 @@
+{%- comment -%}
+  Overrides minima 2.5's _includes/footer.html.
+
+  The default is a three-column layout: name/email, social icons, and the whole
+  site description dumped into the last column. This replaces it with a single
+  quiet row.
+
+  The h-card / u-url / p-name / u-email classes are microformats that minima
+  ships and that some tools read to identify a site's owner — kept deliberately.
+{%- endcomment -%}
+
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ '/' | relative_url }}"></data>
+
+  <div class="wrapper footer-inner">
+    <p class="footer-name">
+      <span class="p-name">{{ site.author | default: site.title | escape }}</span>
+      <span class="footer-sep">·</span>
+      <span class="footer-tagline">{{ site.tagline | escape }}</span>
+    </p>
+
+    <ul class="footer-links">
+      {%- if site.email %}
+      <li><a class="u-email" href="mailto:{{ site.email }}">Email</a></li>
+      {%- endif %}
+      {%- if site.scholar_url %}
+      <li><a href="{{ site.scholar_url }}">Scholar</a></li>
+      {%- endif %}
+      {%- if site.orcid_url %}
+      <li><a href="{{ site.orcid_url }}">ORCID</a></li>
+      {%- endif %}
+      {%- if site.github_username %}
+      <li><a href="https://github.com/{{ site.github_username }}">GitHub</a></li>
+      {%- endif %}
+      {%- if site.twitter_username %}
+      <li><a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a></li>
+      {%- endif %}
+      <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+    </ul>
+  </div>
+</footer>

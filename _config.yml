@@ -11,9 +11,10 @@ description: >-
 baseurl: ""
 url: "https://joseph1otoo.github.io"
 
-author:
-  name: Joseph Otoo
-  email: joseph1otoo@gmail.com
+# Must be a plain string, not a name/email mapping. Minima 2.5's footer does
+# `{{ site.author | escape }}`, so a mapping gets stringified onto the page as
+# a literal Ruby hash. jekyll-seo-tag accepts a string here too.
+author: Joseph Otoo
 
 email: joseph1otoo@gmail.com
 github_username: Joseph1Otoo

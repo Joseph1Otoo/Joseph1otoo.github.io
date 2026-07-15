@@ -37,6 +37,71 @@ h1, h2, h3 {
   text-underline-offset: 2px;
 }
 
+/* ---- Footer ------------------------------------------------------------ */
+
+/* Minima's default footer is a three-column grid. We override the markup in
+   _includes/footer.html, so the column rules no longer apply — these style the
+   replacement. */
+
+.site-footer {
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit 0;
+}
+
+.footer-inner {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+}
+
+.footer-name {
+  color: $grey-color;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.footer-sep {
+  opacity: 0.5;
+  padding: 0 0.15rem;
+}
+
+.footer-tagline {
+  font-style: italic;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: $grey-color;
+    font-size: 0.9em;
+    text-decoration: none;
+
+    &:hover {
+      color: $brand-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* On a phone the two halves should stack rather than stretch apart. */
+@include media-query($on-palm) {
+  .footer-inner {
+    display: block;
+  }
+
+  .footer-links {
+    margin-top: 0.6rem;
+  }
+}
+
 /* ---- Publications ------------------------------------------------------ */
 
 .pub-profiles {
