@@ -39,7 +39,16 @@ jobs:
       # branch builds for an unrelated reason. This is a user site, so baseurl
       # is empty (set in _config.yml) and no base_path injection is needed.
       - name: Build
-        run: bundle exec jekyll build --trace
+        run: |
+          bundle exec jekyll build --trace
+
+          # minima declares jekyll-feed as a gemspec runtime dependency, and
+          # Jekyll auto-requires a theme's runtime deps (PluginManager
+          # #require_theme_deps). So the plugin loads and generates /feed.xml
+          # even though it is in neither `plugins:` nor the Gemfile — removing
+          # it from config is not enough. Delete the artifact instead.
+          # The autodiscovery <link> is handled separately in _includes/head.html.
+          rm -f _site/feed.xml
         env:
           JEKYLL_ENV: production
 
@@ -91,14 +100,20 @@ jobs:
 
           echo
           echo "--- RSS should be gone entirely ---"
-          echo "minima's head.html calls {% feed_meta %}, a tag registered by"
-          echo "jekyll-feed. We drop the plugin, so _includes/head.html is"
-          echo "overridden to omit it — otherwise the build dies on an unknown tag."
+          echo "jekyll-feed cannot be switched off via config: minima declares it"
+          echo "as a gemspec runtime dependency and Jekyll auto-requires those."
+          echo "So the Build step deletes _site/feed.xml, head.html drops the"
+          echo "autodiscovery link, and index.markdown avoids minima's home layout."
           if [ -f _site/feed.xml ]; then
             note "feed.xml is still being generated"
           fi
           if grep -q 'application/atom' _site/index.html; then
             note "feed autodiscovery still present in <head>"
+          fi
+          # minima's `home` layout hardcodes a "subscribe via RSS" link to
+          # /feed.xml. index.markdown uses `page` to avoid it; catch a regression.
+          if grep -rq 'rss-subscribe\|via RSS' _site --include='*.html'; then
+            note "a 'subscribe via RSS' link is still rendered somewhere"
           fi
 
           echo

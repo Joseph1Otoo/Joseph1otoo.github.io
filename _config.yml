@@ -39,9 +39,15 @@ header_pages:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-# jekyll-feed removed deliberately: it generated /feed.xml plus an
-# autodiscovery <link> in <head>. Re-add it here to bring RSS back once posting
-# is regular.
+# NOTE: jekyll-feed is absent here, but that does NOT disable it. Minima
+# declares jekyll-feed as a gemspec runtime dependency and Jekyll auto-requires
+# a theme's runtime deps, so the plugin loads and generates /feed.xml anyway.
+# RSS is suppressed in three places instead:
+#   1. .github/workflows/pages.yml — `rm -f _site/feed.xml` after the build
+#   2. _includes/head.html         — drops minima's feed-meta autodiscovery link
+#   3. index.markdown              — uses `page`, not minima's `home` layout,
+#                                    which hardcodes a "subscribe via RSS" link
+# Undo all three to bring RSS back.
 
 permalink: /blog/:year/:month/:title/
 

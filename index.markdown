@@ -1,7 +1,10 @@
 ---
-layout: home
+# `page`, not `home`, on purpose. Minima's home layout appends a post list AND
+# a hardcoded `subscribe via RSS` link pointing at /feed.xml — which no longer
+# exists now that jekyll-feed is removed, so it would 404. The post list lives
+# on /writing/ instead.
+layout: page
 title: Joseph Otoo
-list_title: Recent writing
 ---
 
 ## Speaking through data for the common good

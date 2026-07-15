@@ -1,17 +1,17 @@
 {%- comment -%}
   Overrides minima 2.5's _includes/head.html.
 
-  The only change is the removal of minima's feed-meta tag (the one jekyll-feed
-  registers, spelled with Liquid braces in the original). That tag ships with
-  the jekyll-feed plugin, which we no longer load, so leaving it in place makes
-  Jekyll fail the build outright with "Liquid Exception: Unknown tag". It
-  emitted the RSS autodiscovery link we deliberately removed.
+  The only change is the removal of minima's feed-meta tag (written with Liquid
+  braces in the original; spelled out here so nothing tries to parse it). That
+  tag emits the RSS autodiscovery <link>, which we do not want.
 
-  The tag name is written without braces here on purpose: a Liquid comment block
-  no-ops unknown tags, but there is no reason to depend on that.
+  Note the tag still WORKS — jekyll-feed is a gemspec runtime dependency of
+  minima, and Jekyll auto-requires a theme's runtime deps, so the plugin loads
+  even though it appears in neither `plugins:` nor the Gemfile. This override is
+  about suppressing the link, not about avoiding an undefined tag.
 
-  If jekyll-feed is ever restored to `plugins:` in _config.yml, delete this file
-  so minima's own head.html takes over again.
+  To bring RSS back: delete this file, drop the `rm -f _site/feed.xml` line from
+  the build workflow, and give index.markdown `layout: home` again.
 {%- endcomment -%}
 <head>
   <meta charset="utf-8">
