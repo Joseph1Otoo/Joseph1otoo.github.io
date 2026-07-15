@@ -15,3 +15,22 @@ CV_*.pdf
 # maintaining _data/publications.yml. Includes publisher-typeset versions
 # (e.g. the Elsevier Hexpo article) that should not be redistributed.
 All_Publications.md
+
+# Raw research data must never enter this repo — it is public.
+#
+# The working datasets live in ../Data and belong there. Two of them are
+# individual-level personal health data:
+#   * Covid_Data.csv — a patient line list with LAB IDs, symptoms, COVID/TB/
+#     pneumococcal results, region and district. Pseudonymous, not anonymous.
+#   * "Behavioral insights for COVID-19 in Ghana (Responses).xlsx" — a
+#     214-column survey export whose respondents consented to a specific
+#     WHO/GHS/UHAS study, not to open publication.
+#
+# Posts should carry aggregates and charts, never the underlying records. These
+# patterns are a backstop in case a file is ever copied in here by accident.
+*.xlsx
+*.xls
+Covid_Data.csv
+BOGnew.csv
+/Data/
+/data/
