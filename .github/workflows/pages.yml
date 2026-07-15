@@ -59,6 +59,18 @@ jobs:
           echo "--- our styles only ship if they land in THAT file.               ---"
           grep -q '\.pub-title' _site/assets/main.css || { echo "custom CSS missing from main.css"; exit 1; }
           echo "custom rules present in main.css"
+          echo
+          echo "--- nav: header_pages is a minima 2.5 key; minima.nav_pages is silently ---"
+          echo "--- ignored, which previously let the homepage into the menu.            ---"
+          test -f _site/writing/index.html || { echo "MISSING writing page"; exit 1; }
+          nav=$(grep -o 'class="page-link"[^>]*>[^<]*' _site/index.html | sed 's/.*>//' | tr -d ' ' | paste -sd, -)
+          echo "nav items: $nav"
+          echo "$nav" | grep -q 'JosephOtoo' && { echo "homepage leaked back into nav"; exit 1; }
+          echo
+          echo "--- RSS should be gone entirely ---"
+          test -f _site/feed.xml && { echo "feed.xml still generated"; exit 1; }
+          grep -rq 'application/atom' _site/index.html && { echo "feed autodiscovery still in <head>"; exit 1; }
+          echo "no feed.xml, no autodiscovery"
 
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/gh-pages'

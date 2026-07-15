@@ -102,6 +102,69 @@ h1, h2, h3 {
   }
 }
 
+/* ---- Writing ----------------------------------------------------------- */
+
+.writing-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.writing-item {
+  border-bottom: 1px solid $rule;
+  padding: 1.1rem 0;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  > span {
+    display: block;
+  }
+}
+
+.writing-date {
+  color: $grey-color;
+  font-size: 0.82em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.writing-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 0.15rem;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.writing-excerpt {
+  color: $grey-color;
+  font-size: 0.94em;
+  margin-top: 0.35rem;
+}
+
+.writing-tags {
+  margin-top: 0.35rem;
+}
+
+.writing-tag {
+  background: $rule;
+  border-radius: 3px;
+  color: $grey-color;
+  font-size: 0.78em;
+  margin-right: 0.3rem;
+  padding: 0.1rem 0.45rem;
+  text-transform: lowercase;
+}
+
 /* ---- Publications ------------------------------------------------------ */
 
 .pub-profiles {

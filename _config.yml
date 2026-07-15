@@ -25,17 +25,23 @@ orcid_url: "https://orcid.org/0000-0002-3364-2857"
 
 # Build settings
 theme: minima
-minima:
-  skin: classic
-  nav_pages:
-    - about.markdown
-    - publications.md
-    - research.md
+
+# Navigation. Minima 2.5 reads `header_pages` at the top level — `minima.skin`
+# and `minima.nav_pages` are minima 3.x keys and are silently ignored here,
+# which is why the nav previously fell back to listing every page including the
+# homepage. Order below is the order shown.
+header_pages:
+  - writing.md
+  - research.md
+  - publications.md
+  - about.markdown
 
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+# jekyll-feed removed deliberately: it generated /feed.xml plus an
+# autodiscovery <link> in <head>. Re-add it here to bring RSS back once posting
+# is regular.
 
 permalink: /blog/:year/:month/:title/
 
