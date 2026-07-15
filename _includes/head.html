@@ -1,0 +1,25 @@
+{%- comment -%}
+  Overrides minima 2.5's _includes/head.html.
+
+  The only change is the removal of minima's feed-meta tag (the one jekyll-feed
+  registers, spelled with Liquid braces in the original). That tag ships with
+  the jekyll-feed plugin, which we no longer load, so leaving it in place makes
+  Jekyll fail the build outright with "Liquid Exception: Unknown tag". It
+  emitted the RSS autodiscovery link we deliberately removed.
+
+  The tag name is written without braces here on purpose: a Liquid comment block
+  no-ops unknown tags, but there is no reason to depend on that.
+
+  If jekyll-feed is ever restored to `plugins:` in _config.yml, delete this file
+  so minima's own head.html takes over again.
+{%- endcomment -%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+</head>

@@ -21,7 +21,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -43,34 +43,69 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      # Assertions use explicit if/then rather than `cmd && { exit 1; }`.
+      # Actions runs steps under `bash -e -o pipefail`, where an && list whose
+      # left side fails returns non-zero — which can fail the step even when the
+      # check passed. Collect failures and report them all at once.
       - name: Check the build actually produced what we expect
         run: |
+          fail=0
+          note() { echo "FAIL: $1"; fail=1; }
+
           echo "--- _site ---"
           find _site -type f | sort
+
           echo
           echo "--- publications: does the Liquid render? ---"
-          test -f _site/publications/index.html || { echo "MISSING publications page"; exit 1; }
-          count=$(grep -c '<li class="pub"' _site/publications/index.html)
-          echo "publication entries rendered: $count"
-          test "$count" -eq 16 || { echo "EXPECTED 16 entries, got $count"; exit 1; }
-          grep -q '{%\|{{' _site/publications/index.html && { echo "raw Liquid leaked into output"; exit 1; }
+          if [ ! -f _site/publications/index.html ]; then
+            note "publications page missing"
+          else
+            count=$(grep -c '<li class="pub"' _site/publications/index.html || true)
+            echo "publication entries rendered: $count"
+            [ "$count" -eq 16 ] || note "expected 16 publication entries, got $count"
+            if grep -q '{%\|{{' _site/publications/index.html; then
+              note "raw Liquid leaked into rendered output"
+            fi
+          fi
+
           echo
-          echo "--- custom CSS: minima links /assets/main.css and nothing else, so ---"
-          echo "--- our styles only ship if they land in THAT file.               ---"
-          grep -q '\.pub-title' _site/assets/main.css || { echo "custom CSS missing from main.css"; exit 1; }
-          echo "custom rules present in main.css"
+          echo "--- custom CSS ---"
+          echo "minima links /assets/main.css and nothing else, so our styles only"
+          echo "ship if they land in THAT file (assets/main.scss, not elsewhere)."
+          if grep -q '\.pub-title' _site/assets/main.css; then
+            echo "OK: custom rules present in main.css"
+          else
+            note "custom CSS missing from main.css"
+          fi
+
           echo
-          echo "--- nav: header_pages is a minima 2.5 key; minima.nav_pages is silently ---"
-          echo "--- ignored, which previously let the homepage into the menu.            ---"
-          test -f _site/writing/index.html || { echo "MISSING writing page"; exit 1; }
-          nav=$(grep -o 'class="page-link"[^>]*>[^<]*' _site/index.html | sed 's/.*>//' | tr -d ' ' | paste -sd, -)
+          echo "--- nav ---"
+          echo "header_pages is the minima 2.5 key; minima.nav_pages is 3.x and is"
+          echo "silently ignored, which previously let the homepage into the menu."
+          [ -f _site/writing/index.html ] || note "writing page missing"
+          nav=$(grep -o 'class="page-link"[^>]*>[^<]*' _site/index.html | sed 's/.*>//' | tr -d ' ' | paste -sd, - || true)
           echo "nav items: $nav"
-          echo "$nav" | grep -q 'JosephOtoo' && { echo "homepage leaked back into nav"; exit 1; }
+          case "$nav" in
+            *JosephOtoo*) note "homepage leaked back into the nav" ;;
+          esac
+
           echo
           echo "--- RSS should be gone entirely ---"
-          test -f _site/feed.xml && { echo "feed.xml still generated"; exit 1; }
-          grep -rq 'application/atom' _site/index.html && { echo "feed autodiscovery still in <head>"; exit 1; }
-          echo "no feed.xml, no autodiscovery"
+          echo "minima's head.html calls {% feed_meta %}, a tag registered by"
+          echo "jekyll-feed. We drop the plugin, so _includes/head.html is"
+          echo "overridden to omit it — otherwise the build dies on an unknown tag."
+          if [ -f _site/feed.xml ]; then
+            note "feed.xml is still being generated"
+          fi
+          if grep -q 'application/atom' _site/index.html; then
+            note "feed autodiscovery still present in <head>"
+          fi
+
+          echo
+          if [ "$fail" -eq 0 ]; then
+            echo "all checks passed"
+          fi
+          exit $fail
 
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/gh-pages'
