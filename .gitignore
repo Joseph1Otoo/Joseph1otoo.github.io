@@ -3,3 +3,15 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# CV source PDFs — these carry personal contact details and, more importantly,
+# referees' direct emails and mobile numbers. This repo is public, so keeping
+# them untracked matters even though _config.yml also excludes them from the
+# built site: committing them would expose the files on github.com regardless
+# of whether Jekyll publishes them.
+CV_*.pdf
+
+# Concatenated full text of published papers, kept locally as a reference for
+# maintaining _data/publications.yml. Includes publisher-typeset versions
+# (e.g. the Elsevier Hexpo article) that should not be redistributed.
+All_Publications.md

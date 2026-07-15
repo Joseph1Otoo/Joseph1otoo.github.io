@@ -1,0 +1,68 @@
+name: Build and deploy site
+
+# Builds on every branch so a push can be verified without touching the live
+# site. Only gh-pages deploys — see the `if` on the deploy job.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          # No Gemfile.lock is committed, so let bundler resolve fresh. Once a
+          # lock is generated and committed, this can become `bundler-cache: true`
+          # for faster builds.
+          bundler-cache: false
+
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
+
+      # No actions/configure-pages here: it queries the Pages API and fails when
+      # the Pages source is not yet set to "GitHub Actions", which would break
+      # branch builds for an unrelated reason. This is a user site, so baseurl
+      # is empty (set in _config.yml) and no base_path injection is needed.
+      - name: Build
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+
+      - name: Show what was built
+        run: |
+          echo "--- _site ---"
+          find _site -type f | sort
+          echo
+          echo "--- publications page: does the Liquid actually render? ---"
+          test -f _site/publications/index.html || { echo "MISSING publications page"; exit 1; }
+          grep -c '<li class="pub"' _site/publications/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/gh-pages'
+
+  deploy:
+    needs: build
+    # Only the live branch publishes. Branch and PR builds stop at `build`.
+    if: github.ref == 'refs/heads/gh-pages' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

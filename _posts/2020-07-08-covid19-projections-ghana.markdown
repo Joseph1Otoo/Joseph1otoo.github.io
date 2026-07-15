@@ -13,12 +13,8 @@ In spite of all the measures implemented, new covid-19 cases are on  the increas
 
 The time series plots of new covid-19 cases in Ghana gives a different indication with regards to when the infection will peak.
 
-<img src="http://Joseph1Otoo.github.io/images/cv1.png">
+![Daily new Covid-19 cases in Ghana, 14 March to 9 July 2020: a volatile series with no clear plateau, spiking above 1,800 at the start of July.]({{ '/images/cv1.png' | relative_url }})
 
+![Cumulative Covid-19 cases in Ghana, 14 March to 9 July 2020, rising to roughly 22,000 with the curve still steepening.]({{ '/images/cv2.png' | relative_url }})
 
-
-<img src="http://Joseph1Otoo.github.io/images/cv2.png">
-
-
-
-<img src="http://Joseph1Otoo.github.io/images/cv3.png">
+![Cumulative Covid-19 deaths in Ghana, 14 March to 9 July 2020, rising to about 130 with a sharp acceleration through June.]({{ '/images/cv3.png' | relative_url }})

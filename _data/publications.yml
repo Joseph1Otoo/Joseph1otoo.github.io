@@ -1,0 +1,170 @@
+# Publication list. The Publications page renders straight from this file, so
+# adding a paper means adding an entry here — no HTML to touch.
+#
+# Sorted into year groups (descending) automatically; order in this file does
+# not matter.
+#
+# Fields: `title` and `year` are required. Everything else is optional and is
+# omitted from the rendering if absent.
+#   authors  — full author string; wrap Joseph's name in ** ** to bold it.
+#   venue    — journal or repository name.
+#   volume   — volume/issue/pages.
+#   type     — journal | preprint | conference | chapter | working-paper
+#   doi/url  — links. `url` wraps the title; `doi` renders a separate link.
+#   note     — one line of context, shown in italics.
+#
+# AUTHOR LISTS ARE TAKEN FROM THE PAPERS THEMSELVES (All_Publications.md,
+# read 2026-07-15), not from Google Scholar and not from the CVs. Both of
+# those were wrong in systematic ways:
+#
+#   * Scholar mangles every SciencePG / ARRB paper, which print author names
+#     surname-first ("Bosson-Amedenu Senyefia"). Scholar reads the last token
+#     as the surname and emits "BA Senyefia". The correct form is
+#     "Bosson-Amedenu, S." Same for Eyiah-Bediako, Nyarko, Osei-Asibey,
+#     Oduro-Okyireh, Okanta-Dade and Otoo himself ("O Joseph").
+#   * The CVs compress long author lists to surface Joseph's name early
+#     ("Azunre, P., Osei, S., Otoo, J., et al."), which on a publications page
+#     would read as a claim to third authorship. He is 21st of 27 on those.
+#
+# Verified from the source PDFs. Where a name below differs from Scholar, the
+# paper is the authority.
+#
+# Every author list below is now verified. Fifteen came from the paper PDFs;
+# the hepatitis B list was confirmed by Joseph on 2026-07-15 and independently
+# matches both Scholar and all four CVs.
+#
+# ---------------------------------------------------------------------------
+# TODO(Joseph) — one open item:
+#
+#   Your CVs say "15 publications" and omit the 2021 ARRB paper ("New model for
+#   the COVID-19 reported cases..."), which IS yours — you are its 6th author.
+#   That makes 16. Worth updating all four CVs.
+# ---------------------------------------------------------------------------
+
+- title: "Shifted Hexpo activation function: An improved vanishing gradient mitigation activation function for disease classification"
+  authors: "**J. Otoo**, S. Nasiru, & I. D. Angbing"
+  venue: "Machine Learning with Applications"
+  volume: "20, 100651"
+  year: 2025
+  type: journal
+  doi: "10.1016/j.mlwa.2025.100651"
+  note: "The core result of my PhD thesis. Applies the Shifted Hexpo activation function to cervical-cancer classification on the SIPaKMeD dataset, with Grad-CAM used to localise the image regions driving each prediction."
+
+- title: "Factors associated with COVID-19 knowledge among Ghanaians: A national survey"
+  authors: "M. P. Kwabla, J. Nyasordzi, G. Kye-Duodu, M. K. Ananga, G. K. Amenuvegbe, **J. Otoo**, D. D. Nuertey, E. K. Mensah, K. Asante-Afari, D. Aboagye, J. Ansong, & S.-A. Ohene"
+  venue: "PLOS ONE"
+  volume: "17(11), e0276381"
+  year: 2022
+  type: journal
+  doi: "10.1371/journal.pone.0276381"
+  note: "A cross-sectional survey and CATI study across all 260 districts of Ghana."
+
+- title: "New model for the COVID-19 reported cases and deaths of Ghana in accelerated spread and prediction of the delayed phase"
+  authors: "S. Bosson-Amedenu, J. Acquah, C. C. Nyarko, E. Osei-Asibey, T. Oduro-Okyireh, **J. Otoo**, E. Teku, K. Briki, G. Okanta-Dade, & N. Ouerfelli"
+  venue: "Annual Research & Review in Biology"
+  volume: "36(12), 7–26"
+  year: 2021
+  type: journal
+  doi: "10.9734/ARRB/2021/v36i1230459"
+
+- title: "English–Twi parallel corpus for machine translation"
+  authors: "P. Azunre, S. Osei, S. A. Addo, L. A. Adu-Gyamfi, S. Moore, B. Adabankah, … **J. Otoo**, … & J. B. Hayfron-Acquah"
+  venue: "arXiv"
+  volume: "arXiv:2103.15625"
+  year: 2021
+  type: preprint
+  url: "https://arxiv.org/abs/2103.15625"
+  note: "One of 27 authors, from the NLP Ghana collaboration."
+
+- title: "NLP for Ghanaian languages"
+  authors: "P. Azunre, S. Osei, S. A. Addo, L. A. Adu-Gyamfi, S. Moore, B. Adabankah, … **J. Otoo**, … & J. B. Hayfron-Acquah"
+  venue: "arXiv"
+  volume: "arXiv:2103.15475"
+  year: 2021
+  type: preprint
+  url: "https://arxiv.org/abs/2103.15475"
+  note: "One of 27 authors, from the NLP Ghana collaboration."
+
+- title: "Contextual text embeddings for Twi"
+  authors: "P. Azunre, S. Osei, S. A. Addo, L. A. Adu-Gyamfi, S. Moore, B. Adabankah, … **J. Otoo**, … & J. B. Hayfron-Acquah"
+  venue: "arXiv"
+  volume: "arXiv:2103.15963"
+  year: 2021
+  type: preprint
+  url: "https://arxiv.org/abs/2103.15963"
+  note: "One of 27 authors, from the NLP Ghana collaboration."
+
+- title: "Basic tenets of classification algorithms K-nearest-neighbor, support vector machine, random forest and neural network: A review"
+  authors: "E. Y. Boateng, **J. Otoo**, & D. A. Abaye"
+  venue: "Journal of Data Analysis and Information Processing"
+  volume: "8(4), 341–357"
+  year: 2020
+  type: journal
+  doi: "10.4236/jdaip.2020.84020"
+
+- title: "COVID-19 projections: Single forecast model against multi-model ensemble"
+  authors: "**J. Otoo**, S. Bosson-Amedenu, C. C. Nyarko, E. Osei-Asibey, & E. Y. Boateng"
+  venue: "International Journal of Systems Science and Applied Mathematics"
+  volume: "5(2), 20–26"
+  year: 2020
+  type: journal
+  doi: "10.11648/j.ijssam.20200502.12"
+
+- title: "Time series modeling of dynamic responses of commodity prices to monetary policy shocks in Ghana"
+  authors: "E. Y. Boateng, P. K. Yeboah, I. C. Otoo, & **J. Otoo**"
+  venue: "Journal of Financial Risk Management"
+  volume: "9(4), 377–389"
+  year: 2020
+  type: journal
+  note: "Uses a vector error correction model. Note that I. C. Otoo is a different person."
+
+- title: "Modeling macroeconomic variables using principal component analysis and multiple linear regression: The case of Ghana's economy"
+  authors: "F. Eyiah-Bediako, S. Bosson-Amedenu, & **J. Otoo**"
+  venue: "Journal of Business and Economic Development"
+  volume: "5(1), 1–9"
+  year: 2020
+  type: journal
+  doi: "10.11648/j.jbed.20200501.11"
+
+- title: "Correlates of hepatitis B virus infection among antenatal clinic attendees of Volta Regional Hospital, Ho, Volta Region, Ghana"
+  authors: "**J. Otoo**, P. K. Dah, E. Y. Boateng, & D. A. Abaye"
+  venue: "Open Journal of Applied Sciences"
+  volume: "9(7), 573–586"
+  year: 2019
+  type: journal
+
+- title: "Time series analysis and forecasting of caesarian section births in Ghana"
+  authors: "S. Bosson-Amedenu, **J. Otoo**, & F. Eyiah-Bediako"
+  venue: "Biomedical Statistics and Informatics"
+  volume: "4(1), 1–9"
+  year: 2019
+  type: journal
+  doi: "10.11648/j.bsi.20190401.11"
+
+- title: "Drivers of intermittent preventive treatment of malaria during pregnancy in Ghana: A generalized linear model with negative binomial approach"
+  authors: "E. Y. Boateng, G. E. Anyormi, **J. Otoo**, & D. A. Abaye"
+  venue: "Applied Informatics"
+  volume: "5(1), 1–12"
+  year: 2018
+  type: journal
+
+- title: "Optimal selection of crops: A case study of small-scale farms in Fanteakwa district, Ghana"
+  authors: "**J. Otoo**, J. K. Ofori, & F. Amoah"
+  venue: "International Journal of Scientific & Technology Research"
+  volume: "4(5), 142–146"
+  year: 2015
+  type: journal
+
+- title: "Optimal allocation of irrigation water for rice production in Ghana, case study: Kpong Irrigation Project (KIP)"
+  authors: "J. K. Ofori, C. Bosrotsi, & **J. Otoo**"
+  venue: "International Journal of Interdisciplinary Research and Innovations"
+  volume: "3(1), 25–30"
+  year: 2015
+  type: journal
+
+- title: "LOESS analysis of plowing charges and acreage plowed in the agro-ecological zones of Ghana"
+  authors: "G. Ahorbo, J. Ofori, & **J. Otoo**"
+  venue: "International Journal of Scientific & Technology Research"
+  volume: "4(11)"
+  year: 2015
+  type: journal
