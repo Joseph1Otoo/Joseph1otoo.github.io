@@ -31,7 +31,7 @@ theme: minima
 # which is why the nav previously fell back to listing every page including the
 # homepage. Order below is the order shown.
 header_pages:
-  - writing.md
+  - insights.md
   - research.md
   - publications.md
   - about.markdown

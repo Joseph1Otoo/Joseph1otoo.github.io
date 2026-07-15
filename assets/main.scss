@@ -102,15 +102,15 @@ h1, h2, h3 {
   }
 }
 
-/* ---- Writing ----------------------------------------------------------- */
+/* ---- Insights ---------------------------------------------------------- */
 
-.writing-list {
+.insight-list {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
 
-.writing-item {
+.insight-item {
   border-bottom: 1px solid $rule;
   padding: 1.1rem 0;
 
@@ -123,14 +123,14 @@ h1, h2, h3 {
   }
 }
 
-.writing-date {
+.insight-date {
   color: $grey-color;
   font-size: 0.82em;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-.writing-title {
+.insight-title {
   font-size: 1.15em;
   font-weight: 600;
   line-height: 1.35;
@@ -145,17 +145,17 @@ h1, h2, h3 {
   }
 }
 
-.writing-excerpt {
+.insight-excerpt {
   color: $grey-color;
   font-size: 0.94em;
   margin-top: 0.35rem;
 }
 
-.writing-tags {
+.insight-tags {
   margin-top: 0.35rem;
 }
 
-.writing-tag {
+.insight-tag {
   background: $rule;
   border-radius: 3px;
   color: $grey-color;

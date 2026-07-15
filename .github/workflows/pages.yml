@@ -91,7 +91,12 @@ jobs:
           echo "--- nav ---"
           echo "header_pages is the minima 2.5 key; minima.nav_pages is 3.x and is"
           echo "silently ignored, which previously let the homepage into the menu."
-          [ -f _site/writing/index.html ] || note "writing page missing"
+          [ -f _site/insights/index.html ] || note "insights page missing"
+          # writing.md was renamed to insights.md; a leftover source file would
+          # silently keep serving a duplicate page at /writing/.
+          if [ -f _site/writing/index.html ]; then
+            note "stale /writing/ page still built — delete writing.md"
+          fi
           nav=$(grep -o 'class="page-link"[^>]*>[^<]*' _site/index.html | sed 's/.*>//' | tr -d ' ' | paste -sd, - || true)
           echo "nav items: $nav"
           case "$nav" in
